@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sinhvien_id: 1
+  answer_id: 1
+  answer_text: MyText
+
+two:
+  sinhvien_id: 1
+  answer_id: 1
+  answer_text: MyText

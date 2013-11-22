@@ -1,0 +1,52 @@
+<% content_for :sidebar_info do %>
+  <div class="well sidebar-nav sidebar-nav-fixed">
+	<h4><%= @current_survey %></h4><hr>
+	
+	<table class="table">
+		<tr>
+			<td>Họ và tên:</td>
+			<td><%= current_user.name %></td>
+		</tr>
+		<tr>
+			<td>Mã sinh viên:</td>
+			<td><%= @current_sinhvien.masinhvien %></td>
+		</tr>
+		<tr>
+			<td>Giảng viên:</td>
+			<td><%= @current_sinhvien.giangvien %></td>
+		</tr>
+		<tr>
+			<td>Bộ môn:</td>
+			<td><%= @current_sinhvien.bomon %></td>
+		</tr>
+		<tr>
+			<td>Tên môn:</td>
+			<td><%= @current_sinhvien.tenmon %></td>
+		</tr>
+	</table>	
+  </div>
+<% end %>
+ 
+
+<% if @current_sinhvien then %>
+	<br/>
+	<form class="form-inline" action="<%= sinhvien_path(@current_survey,@current_sinhvien) %>" method="post" data-validate="parsley">
+		<% @current_survey.questions.each do |question| %>		
+			<h4><%= question.display_order %>.  <%= question.question_text %></h4><span id="_error_<%= question.id %>" style="color:red; !important"></span>
+			<% if question.is_radio? %>
+				<% question.answers.each do |answer| %>					
+					&ensp;&ensp;&ensp;<input class="radio" type="radio" data-error-container="#_error_<%= question.id %>"  data-required="true" name="_radio_<%= question.id %>" value="<%= answer.id %>" data-error-message="Bạn phải chọn ít nhất 1 phương án" class="parsley-validated" />&ensp;<%= answer.answer_text %></br>
+				<% end %>		
+			<% else %>
+				<% question.answers.each do |answer| %>
+					&ensp;&ensp;&ensp;<textarea rows="4" cols="30" name="_text_<%= answer.id %>"></textarea><br />
+				<% end %>
+			<% end %>
+		<% end %>
+		<br />
+		 <input name="authenticity_token" 
+	               type="hidden" 
+	               value="<%= form_authenticity_token %>"/>
+		<input  class="btn btn-primary" type="submit" value="<%= @current_status %>" />
+	</form>
+<% end %>

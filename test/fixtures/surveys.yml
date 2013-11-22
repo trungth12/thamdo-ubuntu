@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  open_date: 2013-05-07
+  close_date: 2013-05-07
+  title: MyString
+  year: MyString
+  semester_id: 1
+
+two:
+  open_date: 2013-05-07
+  close_date: 2013-05-07
+  title: MyString
+  year: MyString
+  semester_id: 1

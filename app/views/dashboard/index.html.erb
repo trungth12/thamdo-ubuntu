@@ -1,0 +1,29 @@
+<% content_for :sidebar_info do %>
+  <div class="well sidebar-nav sidebar-nav-fixed">
+	
+	<h4>Chào mừng bạn đến với hệ thống thăm dò môn học</h4>
+	<table class="table">
+		<tr>
+			<td>Họ và tên:</td>
+			<td><%= current_user.name %></td>
+		</tr>
+		<tr>
+			<td>Mã sinh viên:</td>
+			<td><%= current_user.masinhvien %></td>
+		</tr>
+	
+	</table>	
+  </div>
+<% end %>
+	<% if !current_surveys.empty? then %>
+	<br />
+	<h4>Đây là danh sách các bài thăm dò bạn cần hoàn thành </h4><br/> 
+		<ul>
+			<% current_surveys.each do |survey| %>
+				<h4><li><%= link_to survey.title, thamdo_path(survey) %></li></h4>
+			<% end %>
+		</ul>
+	<% else %>
+		Hiện tại bạn không có bài thăm dò nào.
+	<% end %>
+<hr>
