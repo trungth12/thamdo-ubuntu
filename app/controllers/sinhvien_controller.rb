@@ -7,12 +7,14 @@ class SinhvienController < DashboardController
   before_filter :check_complete, :only => [:update]
   
 
-  def show  	  	  	  	
+  def show  
+    authorize! :read, @current_sinhvien	  	  	  	
   	redirect_to(root_path) unless @current_sinhvien  	
   	#flash[:success] = "Bạn đang làm bài thăm dò môn: #{@current_sinhvien.tenmon}"
   end
 
   def update
+  	  authorize! :read, @current_sinhvien
   	  @current_sinhvien.update_voted!(@current_ip)	  	
 	  	@radio_answers.each do |k,v|
 	  		Ketqua.create!(:answer_id => v.to_i, :sinhvien_id => @current_sinhvien.id)

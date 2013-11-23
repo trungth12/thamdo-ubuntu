@@ -61,6 +61,7 @@ GEM
       sass (~> 3.0)
       terminal-table (~> 1.4)
     builder (3.0.4)
+    cancan (1.6.10)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -232,11 +233,13 @@ DEPENDENCIES
   activeadmin
   activerecord-postgresql-adapter
   brakeman
+  cancan
   coffee-rails (~> 3.2.1)
   devise
   devise_cas_authenticatable
   jquery-rails
   parsley-rails
+  pg
   puma (= 1.6.3)
   rails (= 3.2.13)
   rails-backbone

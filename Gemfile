@@ -46,6 +46,7 @@ group :development do
   gem 'brakeman', :require => false
 end
 gem 'pg'
+gem 'cancan'
 gem 'resque' # or a compatible alternative / fork
 gem 'resque_mailer'
 gem "rails-backbone"
