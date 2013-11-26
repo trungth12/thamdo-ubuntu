@@ -5,6 +5,9 @@ class Ability
     user ||= User.new   
     #can :read, :all
     
+    can :read, Survey do |sv|
+        sv.activated
+    end
     can :read, Sinhvien do |sv|
         user.masinhvien and user.masinhvien.upcase == sv.masinhvien.upcase
     end

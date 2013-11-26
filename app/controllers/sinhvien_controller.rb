@@ -8,12 +8,14 @@ class SinhvienController < DashboardController
   
 
   def show  
+  	authorize! :read, @current_survey
     authorize! :read, @current_sinhvien	  	  	  	
   	redirect_to(root_path) unless @current_sinhvien  	
   	#flash[:success] = "Bạn đang làm bài thăm dò môn: #{@current_sinhvien.tenmon}"
   end
 
   def update
+  	  authorize! :read, @current_survey
   	  authorize! :read, @current_sinhvien
   	  @current_sinhvien.update_voted!(@current_ip)	  	
 	  	@radio_answers.each do |k,v|
