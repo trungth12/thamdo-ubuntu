@@ -2,9 +2,10 @@
 Thamdo::Application.routes.draw do
   
   match "user/status/:id" => 'User#status', :as => :user_status, :via => :get
-
-  scope "/api" do
-    resources :users, :defaults => { :format => 'json' }
+  namespace :api, :defaults => {:format => :json} do
+    namespace :v1 do            
+        get 'thamdo/:id' => 'Sinhvien#thamdo'                      
+    end
   end
 
   match "thamdo/:id/monhoc/:monhoc_id" => 'Sinhvien#show' , :as => :sinhvien, :via => :get
