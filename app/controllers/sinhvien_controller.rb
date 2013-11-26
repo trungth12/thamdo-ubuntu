@@ -9,7 +9,8 @@ class SinhvienController < DashboardController
 
   def show  
   	authorize! :read, @current_survey
-    authorize! :read, @current_sinhvien	  	  	  	
+    authorize! :read, @current_sinhvien	  	
+    raise CanCan::AccessDenied.new("Not authorized!", :read, @current_survey) if @current_survey.id != @current_sinhvien.survey.id
   	redirect_to(root_path) unless @current_sinhvien  	
   	#flash[:success] = "Bạn đang làm bài thăm dò môn: #{@current_sinhvien.tenmon}"
   end
@@ -17,6 +18,7 @@ class SinhvienController < DashboardController
   def update
   	  authorize! :read, @current_survey
   	  authorize! :read, @current_sinhvien
+  	  raise CanCan::AccessDenied.new("Not authorized!", :read, @current_survey) if @current_survey.id != @current_sinhvien.survey.id
   	  @current_sinhvien.update_voted!(@current_ip)	  	
 	  	@radio_answers.each do |k,v|
 	  		Ketqua.create!(:answer_id => v.to_i, :sinhvien_id => @current_sinhvien.id)
