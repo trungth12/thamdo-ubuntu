@@ -6,7 +6,7 @@ class Ability
     #can :read, :all
     
     can :read, Sinhvien do |sv|
-        user.masinhvien == sv.masinhvien
+        user.masinhvien and user.masinhvien.upcase == sv.masinhvien.upcase
     end
     
     # Define abilities for the passed in user here. For example:
