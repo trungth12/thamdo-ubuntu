@@ -7,7 +7,7 @@ production:
   adapter: postgresql
   host: localhost
   port: 5432
-  username: thamdo
+  username: postgres
   password: 123456
   database: thamdo
   pool: 5
@@ -27,7 +27,7 @@ development:
   host: localhost
   port: 5432
   username: thamdo
-  password: 123456
+  password: thamdo 1234 9876
   database: thamdo
   pool: 5
   timeout: 5000

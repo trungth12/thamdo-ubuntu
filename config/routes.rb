@@ -1,18 +1,18 @@
 
 Thamdo::Application.routes.draw do
-  
-  match "user/status/:id" => 'User#status', :as => :user_status, :via => :get
+  root :to => 'dashboard#index'
+  get "user/status/:id" => 'user#status', :as => :user_status
   namespace :api, :defaults => {:format => :json} do
     namespace :v1 do            
-        get 'thamdo/:id' => 'Sinhvien#thamdo'                      
+        get 'thamdo/:id' => 'sinhvien1#thamdo'                      
     end
   end
+  get 'thamdo/:id' => 'sinhvien#thamdo'
+  get "thamdo/:id/monhoc/:monhoc_id" => 'sinhvien#show' , :as => :sinhvien
 
-  match "thamdo/:id/monhoc/:monhoc_id" => 'Sinhvien#show' , :as => :sinhvien, :via => :get
-
-  match "thamdo/:id/monhoc/:monhoc_id" => 'Sinhvien#update' , :as => :sinhvien, :via => :post
-  match "thamdo/:id" => 'Dashboard#show' , :as => :thamdo, :via => :get
-  get "dashboard/index"
+  post "thamdo/:id/monhoc/:monhoc_id" => 'sinhvien#update' 
+  get "thamdo/:id" => 'dashboard#show' , :as => :thamdo
+  # get "dashboard/index"
 
  devise_for :users do
   get '/users/sign_out' => 'devise/cas_sessions#destroy'

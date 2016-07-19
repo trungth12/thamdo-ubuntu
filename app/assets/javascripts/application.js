@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require parsley
-//= require parsley.extend
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync

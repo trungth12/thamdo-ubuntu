@@ -1,5 +1,5 @@
 class Survey < ActiveRecord::Base
-  attr_accessible :close_date, :open_date, :title, :activated
+ # attr_accessible :close_date, :open_date, :title, :activated
 
   validates_presence_of :title, :open_date, :close_date
 
@@ -7,7 +7,7 @@ class Survey < ActiveRecord::Base
   has_many :sinhviens, :dependent => :destroy
   
 
-  scope :by_activated, where(:activated => true)
+  scope :by_activated, -> { where(:activated => true)}
   def to_s
   	"#{self.title}"
   end

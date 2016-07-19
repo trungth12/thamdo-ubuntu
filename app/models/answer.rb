@@ -1,5 +1,5 @@
 class Answer < ActiveRecord::Base
-  attr_accessible  :answer_text, :question_id, :score_point, :display_order
+  #attr_accessible  :answer_text, :question_id, :score_point, :display_order
 
 
   belongs_to :question

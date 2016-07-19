@@ -6,7 +6,7 @@ require 'rack/cache'
 require 'redis-rack-cache'
  
 use Rack::Cache,
-metastore: 'redis://localhost:6379/1/metastore',
-entitystore: 'redis://localhost:6379/1/entitystore'
+metastore: 'redis://localhost:6582/1/metastore',
+entitystore: 'redis://localhost:6582/1/entitystore'
 
 run Thamdo::Application

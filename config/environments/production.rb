@@ -9,7 +9,7 @@ Thamdo::Application.configure do
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = true
+  config.serve_static_files = true
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
@@ -22,6 +22,7 @@ Thamdo::Application.configure do
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
+  config.eager_load =true
 
   # Specifies the header that your server uses for sending files
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
@@ -31,7 +32,7 @@ Thamdo::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
+  config.log_level = :info
 
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
@@ -40,7 +41,7 @@ Thamdo::Application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production
-  config.cache_store = :redis_store, 'redis://localhost:6379/0'
+  config.cache_store = :redis_store, 'redis://localhost:6582/0'
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -65,7 +66,7 @@ Thamdo::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   config.action_dispatch.rack_cache = {
-    metastore:   "redis://localhost:6379/1/metastore",
-    entitystore: "redis://localhost:6379/1/entitystore"
+    metastore:   "redis://localhost:6582/1/metastore",
+    entitystore: "redis://localhost:6582/1/entitystore"
   }
 end

@@ -1,5 +1,5 @@
 class Sinhvien < ActiveRecord::Base
-  attr_accessible :bomon, :giangvien, :ip_source, :malop, :mamon, :masinhvien, :survey_id, :tenmon, :vote_date
+  #attr_accessible :bomon, :giangvien, :ip_source, :malop, :mamon, :masinhvien, :survey_id, :tenmon, :vote_date
 
   validates_presence_of :bomon, :giangvien, :malop, :masinhvien
   belongs_to :survey
@@ -17,7 +17,7 @@ class Sinhvien < ActiveRecord::Base
   }
   has_many :ketquas, :dependent => :destroy
 
-  scope :by_voted, where("ip_source IS NULL or CAST(ip_source as text) = ''")
+  scope :by_voted, -> { where("ip_source IS NULL or CAST(ip_source as text) = ''") }
   def voted?
   	return (ip_source != nil and ip_source.length > 0)
   end

@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  attr_accessible :question_text, :question_type_id, :required, :survey_id, :display_order
+ # attr_accessible :question_text, :question_type_id, :required, :survey_id, :display_order
 
   validates_presence_of :question_text
 
@@ -13,7 +13,7 @@ class Question < ActiveRecord::Base
 
   after_create :create_default_answer
 
-  default_scope order('display_order ASC')  
+  default_scope {order('display_order ASC')}  
 
   def to_s
   	"#{self.question_text}"

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :cas_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :masinhvien, :name
+  #attr_accessible :username, :masinhvien, :name
 
   validates_presence_of :username
 
